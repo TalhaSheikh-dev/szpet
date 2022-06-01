@@ -27,3 +27,5 @@ python3 /home/talhasheikh/szpet/main.py
 
 #  test the startup script
 sudo journalctl -u google-startup-scripts.service -f
+
+# chmod 777 both env and file to run
