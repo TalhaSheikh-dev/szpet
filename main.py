@@ -6,12 +6,10 @@ from src.train import train
 from src.config import Config
 
 import torch
-from tqdm.notebook import tqdm
 from src.eval import load_model
 from src.utils import batch_data_from_dataframe
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-import matplotlib.pyplot as plt
 
 def print_evaluation(df_test):
     batches = batch_data_from_dataframe(df_test, desc_cols=['text'], batch_size=4)
@@ -19,29 +17,19 @@ def print_evaluation(df_test):
     outputs = []
     logits = []
     with torch.no_grad():
-        for batch in tqdm(batches):
+        for batch in batches:
             pred_lbl, lbl_logits = model.predict(batch)
             logits.extend(lbl_logits.cpu().numpy().tolist())
 
             outputs.extend(pred_lbl.cpu().numpy().tolist())
     df_test['machine_label'] = ['positive' if x == 1 else "negative" for x in outputs]
-    true_label = df_test["label"]
-    
-    prediction = df_test["machine_label"]
-
-    print(classification_report(true_label, prediction))
-    cm = confusion_matrix(true_label, prediction, labels=["negative", "positive"])
-    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["negative", "positive"])
-    disp.plot()
-    plt.show()
-
     return df_test
 
 
 
-#df_test = id_scrapper()
+df_test = id_scrapper()
 import pandas as pd
-df_test = pd.read_csv("/home/talhasheikh/Documents/wavo_co_scraper/data_replies.csv")
+#df_test = pd.read_csv("/home/talhasheikh/Documents/wavo_co_scraper/data_replies.csv")
 df_test = df_test.sample(frac=1).reset_index(drop=True)
 
 
@@ -70,16 +58,17 @@ config = {
 }
 
 
-os.environ['SZ_ROOT'] = '/home/talhasheikh/Documents/sale/email_classification/szpet'
+os.environ['SZ_ROOT'] = '/home/talhasheikh/szpet'
 config = Config(kwargs=config, mkdir=True)
 
 
-model_path = 'exp_out/generic/facebook/muppet-roberta-large/2022-05-26-21-36-28/best_model.pt'
+model_path = 'weights/best_model.pt'
 
 model = load_model(config, model_path)
 model.eval()
 
 output = print_evaluation(df_test)
+output = output[["text","machine_label"]]
 output.to_csv("evaluation/test.csv", index=False)
 
 
