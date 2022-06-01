@@ -1,5 +1,10 @@
 # szpet
 
+# create env
+- pip install --upgrade virtualenv
+- virtualenv --python python3 env
+- source env/bin/activate
+
 
 #  Make sure to have ubuntu 20 lts
 
