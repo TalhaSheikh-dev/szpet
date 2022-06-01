@@ -8,3 +8,4 @@ tqdm==4.48.1
 beautifulsoup4
 requests
 gcsfs
+pandas
