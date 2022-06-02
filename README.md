@@ -1,11 +1,5 @@
 # szpet
 
-# create env
-- pip install --upgrade virtualenv
-- virtualenv --python python3 env
-- source env/bin/activate
-
-
 #  Make sure to have ubuntu 20 lts
 
 #  Install cuda
@@ -20,10 +14,14 @@
 #  clone the repo
 git clone https://github.com/TalhaSheikh-dev/szpet.git
 
+# installing dependencies
+- sudo su
+- pip install -r requirements.txt
+
+
 #  startup script
-#! /bin/bash
-pip install -r /home/talhasheikh/szpet/requirements.txt
-python3 /home/talhasheikh/szpet/main.py
+- #! /bin/bash
+- python3 /home/talhasheikh/szpet/main.py
 
 #  test the startup script
 - sudo journalctl -u google-startup-scripts.service
