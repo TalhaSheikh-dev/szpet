@@ -26,6 +26,8 @@ pip install -r /home/talhasheikh/szpet/requirements.txt
 python3 /home/talhasheikh/szpet/main.py
 
 #  test the startup script
-sudo journalctl -u google-startup-scripts.service
+- sudo journalctl -u google-startup-scripts.service
+- grep startup-scrip /var/log/syslog
+
 
 # chmod 777 both env and file to run
