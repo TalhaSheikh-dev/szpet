@@ -12,7 +12,8 @@
 - sudo apt-get install python3-pip
 
 #  clone the repo
-git clone https://github.com/TalhaSheikh-dev/szpet.git
+- git clone https://github.com/TalhaSheikh-dev/szpet.git
+- gsutil cp gs://szmodels/email_classification_model/best_model.pt /home/talhasheikh/szpet/weights
 
 # installing dependencies
 - sudo su
