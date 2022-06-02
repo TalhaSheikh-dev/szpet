@@ -69,7 +69,10 @@ model.eval()
 
 output = print_evaluation(df_test)
 output = output[["text","machine_label"]]
-output.to_csv("gs://szmodels/email_classification_model/test.csv", index=False)
+from datetime import date
+today = date.today()
+d4 = today.strftime("%b-%d-%Y")
+output.to_csv("gs://szmodels/email_classification_model/test-{}.csv".format(d4), index=False)
 
 
 import sys
