@@ -9,3 +9,4 @@ beautifulsoup4
 requests
 gcsfs
 pandas
+google-cloud-compute
