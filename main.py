@@ -95,4 +95,4 @@ def stop_instance(project_id, zone, machine_name):
     print(f"Instance {machine_name} stopped.")
     return
 
-stop_instance('szlm-333022', 'us-central1-c', 'talha-2')
+stop_instance('szlm-333022', 'us-central1-c', 'talha2')
