@@ -2,6 +2,11 @@
 
 #  Make sure to have ubuntu 20 lts
 
+## vm resources
+- t4 GPU
+- n1-standard-4
+- 30gb boot
+- ubuntu 20lts os
 #  Install cuda
 - curl https://raw.githubusercontent.com/GoogleCloudPlatform/compute-gpu-installation/main/linux/install_gpu_driver.py --output install_gpu_driver.py
 - sudo python3 install_gpu_driver.py
